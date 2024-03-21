@@ -1,4 +1,7 @@
-import java.util.ArrayList;
+package com.cronparser.parser;
+
+import com.cronparser.exception.EmptyExpressionException;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,7 +32,7 @@ public class CronParser {
         }
         String[] values = this.expression.split("\\s+");
         if (values.length < 6) {
-            throw new EmptyExpressionException("Invalid Expression");
+            throw new   EmptyExpressionException("Invalid Expression");
         }
         int i = 0;
         this.parsedMap.put(outputFields.get(i), CronParser.MINUTES_FIELD_PARSER.parse(values[i++]));
@@ -43,10 +46,10 @@ public class CronParser {
     }
 
 
-    private String extractArguments(String[] segments, int startingIndex) {
+    private String extractArguments(String[] values, int startingIndex) {
         StringBuilder arguments = new StringBuilder();
-        for (int i = startingIndex; i < segments.length; i++) {
-            arguments.append(" ").append(segments[i]);
+        for (int i = startingIndex; i < values.length; i++) {
+            arguments.append(" ").append(values[i]);
         }
         return arguments.toString();
     }

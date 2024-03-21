@@ -1,3 +1,5 @@
+package com.cronparser.exception;
+
 public class EmptyExpressionException extends Exception {
     public EmptyExpressionException() {
 
